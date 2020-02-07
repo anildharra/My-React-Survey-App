@@ -1,7 +1,7 @@
 Author : Kumar Anil
 GitHug Repo: https://github.com/anildharra?tab=repositories
 
-DEMO <a href="https://master.d3irh1ebadfncq.amplifyapp.com/" target="_blank">Here</a>
+DEMO <a href="https://master.d3irh1ebadfncq.amplifyapp.com/" target="_top">Here</a>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
