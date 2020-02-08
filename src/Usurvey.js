@@ -64,7 +64,7 @@ class Usurvey extends Component {
         console.log("item.answers:: " + items[item].answers.answer2);
         console.log("item.answers:: " + items[item].answers.answer3);
         */
-       
+
         newState.push({
           id: item,
           studentName: items[item].studentName,
@@ -82,7 +82,41 @@ class Usurvey extends Component {
     console.log("componentDidMount() END");
   }
 
+  recomendationMethod(item)
+  {
+    let recomend ='';
+
+    if(item.answer2 ==="Student"){
+      recomend ="You need to first finish your study then apply your knowledge with your interested technology/Design/Marketing";
+    } else if(item.answer2 ==="in-job"){
+      recomend ="While your are in job, you need to get opportunities with number of training and skill update.";
+      if(item.answer1==="Technology") {
+        recomend +=" Your are in technology field, so you need to graspe latest technology skill like: React, Angular, Nodejs, Cloud Computing, Solution Architect, Adminstrator. Network Engineer.";
+      } else if(item.answer1==="Design") {
+        recomend +=" Your are in Designing field, so you need to graspe skill like: Digital Graphy, Media design, Art softwares (Photoshop, Illustrator, Adobe Design Suite).";
+       
+     } else if(item.answer1==="Marketing") {
+      recomend +=" Of course, marketing skills are applied to traditional marketing functions like advertising, sales, promotion, public relations, marketing research and brand management. However, marketing skills are also highly valued by employers in almost all sectors of the economy and job market.";
+       
+     }
+    
+    } else if(item.answer2 ==="looking-job"){
+      if(item.answer1==="Technology") {
+        recomend ="Your are in technology field, so you need to graspe latest technology skill like: React, Angular, Nodejs, Cloud Computing, Solution Architect, Adminstrator. Network Engineer.";
+      } else if(item.answer1==="Design") {
+        recomend ="Your are in Designing field, so you need to graspe skill like: Digital Graphy, Media design, Art softwares (Photoshop, Illustrator, Adobe Design Suite).";
+       
+     } else if(item.answer1==="Marketing") {
+      recomend =" Of course, marketing skills are applied to traditional marketing functions like advertising, sales, promotion, public relations, marketing research and brand management. However, marketing skills are also highly valued by employers in almost all sectors of the economy and job market.";
+       
+     }
+      
+    }
+    return recomend;
+
+  }
    
+
 
   constructor(props){
     console.log("constructor() BEGIN");
@@ -123,7 +157,7 @@ class Usurvey extends Component {
         questions = <div>
           <h2>Here are some questions: </h2>
           <form onSubmit={this.questionSubmit}>
-            <div className="card">
+            <div className="card"> 
               <label>What kind of courses you like the most: </label> <br />
               <input type="radio" name="answer1" value="Technology" onChange={this.answerSelected} />Technology
               <input type="radio" name="answer1" value="Design" onChange={this.answerSelected} />Design
@@ -187,6 +221,10 @@ class Usurvey extends Component {
                     <div>
                       <span>Is online learning helpful: <span className="boldclass" >
                         {item.answer3}</span></span>  
+                    </div>
+                    <div>
+                      <span>Recomendation: <span className="boldclass" >
+                        {this.recomendationMethod(item)}</span></span>  
                     </div>
                 </div>
                      
